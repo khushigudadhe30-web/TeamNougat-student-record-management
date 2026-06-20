@@ -11,11 +11,9 @@ class StudentScreen extends StatefulWidget {
 
 class _StudentScreenState extends State<StudentScreen> {
   final FirestoreService _firestoreService = FirestoreService();
-  final TextEditingController _rollNumberController = TextEditingController();
   final GlobalKey<FormState> _searchFormKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _editFormKey = GlobalKey<FormState>();
 
-  // Phase tracking: false = roll number input, true = record display
   bool _recordFetched = false;
   bool _isLoading = false;
   bool _isEditing = false;
@@ -25,6 +23,7 @@ class _StudentScreenState extends State<StudentScreen> {
 
   // Edit controllers
   final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _rollNumberController = TextEditingController();
   final TextEditingController _departmentController = TextEditingController();
   final TextEditingController _semesterController = TextEditingController();
   final TextEditingController _cgpaController = TextEditingController();
@@ -164,7 +163,7 @@ class _StudentScreenState extends State<StudentScreen> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
+          backgroundColor: Colors.white,
           elevation: 0,
           leading: IconButton(
             icon: const Icon(Icons.arrow_back_rounded, color: Colors.black87),
@@ -186,7 +185,6 @@ class _StudentScreenState extends State<StudentScreen> {
     );
   }
 
-  // ─── Phase A: Roll Number Input ─────────────────────────────────────
   Widget _buildSearchView() {
     return Center(
       child: SingleChildScrollView(
@@ -311,7 +309,7 @@ class _StudentScreenState extends State<StudentScreen> {
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xFFFD7E14),
                             foregroundColor: Colors.white,
-                            elevation: 0,
+                            elevation: 3,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16),
                             ),
@@ -365,7 +363,7 @@ class _StudentScreenState extends State<StudentScreen> {
             elevation: 4,
             shadowColor: Colors.black.withValues(alpha: 0.08),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(28),
+              borderRadius: BorderRadius.circular(14),
             ),
             child: Padding(
               padding: const EdgeInsets.all(24),
@@ -378,10 +376,13 @@ class _StudentScreenState extends State<StudentScreen> {
                       color: const Color(0xFFFD7E14).withValues(alpha: 0.1),
                       shape: BoxShape.circle,
                     ),
-                    child: const Icon(
-                      Icons.person_rounded,
-                      size: 48,
-                      color: Color(0xFFFD7E14),
+                    child: ClipOval(
+                      child: Image.asset(
+                        'assets/images/student.png',
+                        width: 48,
+                        height: 48,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -424,7 +425,7 @@ class _StudentScreenState extends State<StudentScreen> {
             elevation: 4,
             shadowColor: Colors.black.withValues(alpha: 0.08),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(28),
+              borderRadius: BorderRadius.circular(14),
             ),
             child: Padding(
               padding: const EdgeInsets.all(24),
