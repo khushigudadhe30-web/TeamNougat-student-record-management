@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'student_screen.dart';
+import 'teacher_dashboard.dart';
 
 class RoleSelectionScreen extends StatelessWidget {
   const RoleSelectionScreen({super.key});
@@ -14,8 +16,8 @@ class RoleSelectionScreen extends StatelessWidget {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            Color(0xFFFDFDFD), // Almost pure white at top
-            Color(0xFFF0F0F2), // Light grey/beige at bottom
+            Color.fromARGB(255, 247, 243, 244), // Almost pure white at top
+            Color.fromARGB(255, 222, 222, 224), // Light grey/beige at bottom
           ],
         ),
       ),
@@ -70,9 +72,9 @@ class RoleSelectionScreen extends StatelessWidget {
                           description: 'Grades & materials.',
                           buttonText: 'Enter \u2192', // Arrow character
                           onTap: () {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Navigating to Student View...'),
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => const StudentScreen(),
                               ),
                             );
                           },
@@ -89,11 +91,10 @@ class RoleSelectionScreen extends StatelessWidget {
                           description: 'Manage classes.',
                           buttonText: 'Enter \u229E', // Grid icon character
                           onTap: () {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text(
-                                  'Navigating to Teacher Dashboard...',
-                                ),
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const TeacherDashboardScreen(),
                               ),
                             );
                           },

@@ -51,7 +51,7 @@ class FirestoreService {
     Map<String, dynamic> updatedData,
   ) async {
     try {
-      await _db.collection('student').doc(docId).update(updatedData);
+      await _db.collection('students').doc(docId).update(updatedData);
     } catch (e) {
       //Show Error Card
       //Temp
@@ -62,7 +62,7 @@ class FirestoreService {
 
   Future<void> deleteRecord(String docId) async {
     try {
-      await _db.collection('student').doc(docId).delete();
+      await _db.collection('students').doc(docId).delete();
     } catch (e) {
       //Show Error Card
       //Temp
