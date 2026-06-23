@@ -189,8 +189,8 @@ students  (Collection)
 | **Code Review** | Flagged missing `mounted` guards before `setState` calls post-async; flagged controller disposal omissions |
 | **Architecture** | Confirmed service-layer separation and `StreamBuilder` stream lifecycle correctness |
 | **Firebase Setup** | Guided `google-services.json` placement, Gradle classpath ordering, and Firestore security rules |
+| **UI CODE generation** | Used Figma for UI generation of the app and connected with backend
 
-> All code was written, understood, and tested by the author. AI was used as a debugging accelerator and code reviewer — not as a code generator.
 
 <div align="center">
 
