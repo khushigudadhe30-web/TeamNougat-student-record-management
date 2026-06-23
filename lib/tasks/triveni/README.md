@@ -67,15 +67,15 @@ This project was submitted as part of the **TeamNougat Flutter Club Task** at **
 
 | Home Screen | Add Student |
 |:---:|:---:|
-| ![Home](screenshots/Home%20screen.jpg) | ![Add](screenshots/add%20student.jpg) |
+| ![Home](screenshots/Homescreen.png) | ![Add](screenshots/addstudent.png) |
 
 | Edit Student | Delete / Confirmation |
 |:---:|:---:|
-| ![Edit](screenshots/edit%20student.jpg) | ![Delete](screenshots/delete%20screen.jpg) |
+| ![Edit](screenshots/editstudent.png) | ![Delete](screenshots/deletescreen.png) |
 
 | Search Student | Figma Design Reference |
 |:---:|:---:|
-| ![Search](screenshots/search%20student.jpg) | ![Figma](screenshots/Allscreenfigmaref.png) |
+| ![Search](screenshots/searchstudent.png) | ![Figma](screenshots/Allscreenfigmaref.png) |
 
 > 📁 Screenshots are located in `lib/tasks/triveni/screenshots/`
 
