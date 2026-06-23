@@ -4,14 +4,18 @@
 <img src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white" />
 <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" />
 <img src="https://img.shields.io/badge/Firestore-FF6F00?style=for-the-badge&logo=firebase&logoColor=white" />
+<img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white" />
+<img src="https://img.shields.io/badge/AI_Assisted-6E40C9?style=for-the-badge&logo=anthropic&logoColor=white" />
 
 <br /><br />
 
-# 🎓 Student Record Management App
+# Student Record Management App
 
-### A Flutter CRUD Application — NIT Patna Flutter Development Club Task
+### Flutter × Firebase CRUD Application
+**NIT Patna — Flutter Development Club | TeamNougat Task**
 
-**Built by [Triveni Narayan Priy](https://github.com/triveninarayanpriy)** | `lib/tasks/triveni/`
+**Built by [Triveni Narayan Priy](https://github.com/triveninarayanpriy)**
+`lib/tasks/triveni/`
 
 <br />
 
@@ -19,86 +23,177 @@
 
 ---
 
-## 📖 Overview
+## Overview
 
-A functional **Student Record Management System** built with Flutter and **Firebase Firestore**. This project was developed for the **TeamNougat Flutter Club Task** at **NIT Patna** to demonstrate proficiency in native UI development, real-time database integration, and standard version control workflows. 
-
-The application supports complete **CRUD operations** across 7 distinct data fields, utilizing real-time stream subscriptions and native state management (`setState()`) without relying on external state management libraries.
+A production-quality **Student Record Management System** built with Flutter and **Firebase Firestore**, implementing complete CRUD operations across 7 student data fields. Features a golden-yellow Material Design 3 UI with real-time list sync via `StreamBuilder`, live search, and comprehensive form validation — powered entirely by Flutter's native `setState()` with zero external state management packages.
 
 ---
 
-## ✨ Core Features
+## Design — Figma First
 
-* **Real-Time Data Sync:** Firestore `snapshots()` stream automatically rebuilds the UI on database changes without manual refreshing.
-* **Dynamic Search:** Client-side filtering allows users to instantly search the database by Name or Roll Number.
-* **Dual-Mode Form:** A single, reusable `AddEditStudentScreen` handles both document creation and pre-filled updates via `TextEditingController` initialization.
-* **Robust Validation:** Strict input rules enforced for Semester (1–8), CGPA (0.0–10.0), Phone (exact 10 digits), and Email structure.
-* **Figma-First Design:** The application UI was wireframed and prototyped in **Figma** prior to coding to ensure consistent layout, color hierarchy, and structural clarity.
+Wireframes were completed in **Figma before writing any code**, following industry-standard design-first workflow.
 
----
-
-## 📸 UI & Design Showcase
-
-<table align="center">
+<table>
   <tr>
-    <td align="center"><b>Home Screen</b><br><br><img src="screenshots/Homescreen.png" width="220" alt="Home Screen"/></td>
-    <td align="center"><b>Add Student</b><br><br><img src="screenshots/addstudent.png" width="220" alt="Add Student"/></td>
-    <td align="center"><b>Edit Student</b><br><br><img src="screenshots/editstudent.png" width="220" alt="Edit Student"/></td>
+    <td align="center" colspan="2"><strong>All Screens — Figma Reference</strong></td>
   </tr>
   <tr>
-    <td align="center"><b>Search Functionality</b><br><br><img src="screenshots/searchstudent.png" width="220" alt="Search"/></td>
-    <td align="center"><b>Delete Confirmation</b><br><br><img src="screenshots/deletescreenn.png" width="220" alt="Delete Dialog"/></td>
-    <td align="center"><b>Figma Wireframe</b><br><br><img src="screenshots/Allscreenfigmaref.png" width="220" alt="Figma Design"/></td>
+    <td align="center" colspan="2">
+      <img src="screenshots/Allscreenfigmaref.png" width="520"/>
+    </td>
   </tr>
 </table>
 
-> *Note: Original screenshots are located in the `lib/tasks/triveni/screenshots/` directory.*
+**Color System**
+
+| Token | Hex | Usage |
+|---|---|---|
+| Primary | `#F5C518` | AppBar, FAB, focused borders, avatars |
+| Edit | `#2196F3` | Edit action icon |
+| Danger | `#DC3545` | Delete icon, delete snackbar |
+| Success | `#28A745` | Add / update confirmation snackbar |
+| Surface | `#FFFFFF` | Cards |
+| Background | `#FAFAFA` | Screen background |
 
 ---
 
-## 🛠️ Technical Architecture
+## App Screenshots
 
-| Component | Technology Used |
+<table>
+  <tr>
+    <td align="center"><strong>Home Screen</strong></td>
+    <td align="center"><strong>Add Student</strong></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="screenshots/Homescreen.png" width="230"/></td>
+    <td align="center"><img src="screenshots/addstudent.png" width="230"/></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>Edit Student</strong></td>
+    <td align="center"><strong>Delete Confirmation</strong></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="screenshots/editstudent.png" width="230"/></td>
+    <td align="center"><img src="screenshots/deletescreenn.png" width="230"/></td>
+  </tr>
+  <tr>
+    <td align="center" colspan="2"><strong>Live Search</strong></td>
+  </tr>
+  <tr>
+    <td align="center" colspan="2"><img src="screenshots/searchstudent.png" width="230"/></td>
+  </tr>
+</table>
+
+---
+
+## Features
+
+**Home Screen**
+- Real-time student list powered by Firestore `snapshots()` — UI rebuilds automatically on every DB change
+- Live search by Name or Roll Number via `setState()`, with inline clear button
+- Student cards show golden avatar, name, roll number, department, semester, and CGPA
+- Blue edit and red delete action icons per card; yellow Extended FAB to add a student
+
+**Add / Edit Student**
+- Single `AddEditStudentScreen` widget handles both modes — null parameter = Add, Student object = Edit
+- 7-field validated form: Name, Roll Number, Department, Semester, CGPA, Phone, Email
+- Edit mode pre-fills all fields via `TextEditingController` initialization in `initState()`
+- Validation: empty fields blocked · Semester 1–8 · CGPA 0.0–10.0 · Phone exactly 10 digits · Email format
+- Loading spinner on submit; green snackbar on success; auto-navigate back to Home
+
+**Delete Confirmation**
+- `AlertDialog` with red warning icon and the student's name in the message body
+- Cancel safely dismisses; Delete closes the dialog → calls Firestore → shows red snackbar
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
 |---|---|
-| **Framework** | Flutter 3.x / Dart 3.x |
-| **Backend** | Firebase Firestore (Cloud NoSQL) |
-| **State Management** | Native `setState()` |
-| **Pattern** | Service-layer architecture (Firestore logic isolated from UI) |
+| Framework | Flutter 3.x / Dart 3.x |
+| Database | Firebase Firestore (Cloud NoSQL, real-time) |
+| State Management | Native `setState()` — no Provider, Bloc, or Riverpod |
+| Architecture | Service-layer pattern — all Firestore logic isolated from UI |
+| Design | Figma (wireframes before code) |
+| IDE | VS Code + Flutter & Dart extensions |
+| Version Control | Git + GitHub |
 
-### 📁 Directory Structure
-```text
+---
+
+## Architecture & Data Flow
+
+```
+Firebase Firestore (Cloud Database)
+        ↑↓   stream / add / update / delete
+firestore_service.dart      ← all DB logic lives here
+        ↑↓   Student objects
+home_screen.dart  +  add_edit_student_screen.dart   ← UI only
+        ↑↓   toMap() / fromMap()
+student.dart                ← data model
+```
+
+---
+
+## Folder Structure
+
+```
 lib/tasks/triveni/
 ├── models/
-│   └── student.dart                 # Data model (toMap / fromMap)
+│   └── student.dart                  # Student data class — toMap() / fromMap()
 ├── services/
-│   └── firestore_service.dart       # Isolated Firebase CRUD logic
+│   └── firestore_service.dart        # CRUD service — add, stream, update, delete
 └── screens/
-    ├── home_screen.dart             # StreamBuilder, Search, FAB
-    └── add_edit_student_screen.dart # Form validation and dynamic state
-    🤖 Development Workflow & Tooling
-To optimize the development cycle and maintain high code quality, external tools were utilized strategically:
+    ├── home_screen.dart              # StreamBuilder list · live search · FAB
+    └── add_edit_student_screen.dart  # Dual-mode validated form (Add & Edit)
+```
 
-Figma: Used for initial UI wireframing and component planning before writing widget trees.
+---
 
-AI Assistants: Leveraged specifically for faster debugging and testing. This included rapidly isolating Gradle build conflicts, optimizing Firestore security rules, and generating edge-case mock data to test form validation boundaries. All core logic and architecture were manually implemented and reviewed.
+## CRUD Reference
 
-📋 Task Requirements Checklist
-[x] Full CRUD operations integrated with Firebase Firestore
+| Operation | Screen | Firestore Call |
+|---|---|---|
+| **Create** | Add Student → Submit | `collection.add(student.toMap())` |
+| **Read** | Home Screen list | `collection.orderBy('name').snapshots()` via `StreamBuilder` |
+| **Update** | Edit Student → Update | `collection.doc(id).update(student.toMap())` |
+| **Delete** | Delete Dialog → Confirm | `collection.doc(id).delete()` |
+| **Search** | Home Screen search bar | Client-side filter on stream snapshot via `setState()` |
 
-[x] Real-time list updates via StreamBuilder
+---
 
-[x] Search filtering by Name and Roll Number
+## Firestore Data Structure
 
-[x] 7-field form with strict input validation
+```
+students  (Collection)
+└── {auto-generated-id}  (Document)
+    ├── name:         "Triveni Narayan Priy"
+    ├── rollNumber:   "2301EC042"
+    ├── department:   "Electronics Engineering"
+    ├── semester:     "3"
+    ├── cgpa:         "8.5"
+    ├── phone:        "9876543210"
+    └── email:        "triveni@nitp.ac.in"
+```
 
-[x] Pre-filled update forms & Delete confirmation dialogs
+---
 
-[x] Exclusively native setState() usage (No Provider/Bloc)
+## AI-Assisted Development
 
-[x] UI designed in Figma prior to implementation
+**Claude (Anthropic)** was used as a pair-programming tool throughout this project — primarily to accelerate debugging and improve test coverage.
 
-[x] Clean Git commits and PR raised before the deadline
+| Area | How AI Helped |
+|---|---|
+| **Debugging** | Identified root causes of `PlatformException (firebase_core/no-app)`, Gradle plugin ordering errors, and Firestore `PERMISSION_DENIED` — with exact line-level fixes |
+| **Testing** | Suggested boundary-value test cases for form validation (e.g. CGPA = 10.0, 10.01; Semester = 0, 9; empty vs whitespace inputs) |
+| **Code Review** | Flagged missing `mounted` guards before `setState` calls post-async; flagged controller disposal omissions |
+| **Architecture** | Confirmed service-layer separation and `StreamBuilder` stream lifecycle correctness |
+| **Firebase Setup** | Guided `google-services.json` placement, Gradle classpath ordering, and Firestore security rules |
 
-Triveni Narayan Priy
-B.Tech ECE (VLSI Design & Technology) · NIT Patna
-Flutter Development Club · June 2026
+> All code was written, understood, and tested by the author. AI was used as a debugging accelerator and code reviewer — not as a code generator.
+
+<div align="center">
+
+**Made with ❤️ by Triveni Narayan Priy**
+
+</div>
