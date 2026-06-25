@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "642645442772",
+    "project_id": "student-management-app-1c249",
+    "storage_bucket": "student-management-app-1c249.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:642645442772:android:569b8870941a8f21417b41",
+        "android_client_info": {
+          "package_name": "com.example.khushi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8UBGFY_4XO-RbrLnMtIgfG4W_QTy3N40"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
