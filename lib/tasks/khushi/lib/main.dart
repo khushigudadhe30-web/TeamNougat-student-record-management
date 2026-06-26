@@ -13,7 +13,7 @@ void main() async {
 }
 
 class StudentManagementApp extends StatelessWidget {
-  const StudentManagementApp({super.key});
+  const StudentManagementApp({super.key});  
 
   @override
   Widget build(BuildContext context) {
